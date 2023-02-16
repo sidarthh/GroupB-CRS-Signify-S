@@ -38,7 +38,7 @@ public class CRSApplicationMenu {
 		}
 		else
 		{
-			System.out.println("Invalid selection");
+			System.out.println("Invalid selection!");
 		}
 		
 	}
