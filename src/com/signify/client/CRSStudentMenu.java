@@ -5,6 +5,9 @@ package com.signify.client;
 
 import java.util.Scanner;
 
+import com.signify.service.StudentInterface;
+import com.signify.service.StudentService;
+
 /**
  * @author Naman
  *
@@ -27,28 +30,30 @@ public class CRSStudentMenu {
 		 System.out.println("WELCOME TO STUDENT MENU");
 		 System.out.println("==========================");
 		 System.out.println();
-		 System.out.println("1.REGISTER FOR COURSE");
-		 System.out.println("2.VIEW GRADES");
-		 System.out.println("3.STUDENT DETAILS");
+		 System.out.println("1.REGISTER");
+		 System.out.println("2.CHANGE PASSWORD");
+		 System.out.println("3.VIEW GRADE CARD");
 		 System.out.println("4.EXIT");
 		 boolean ex = false;
+		 Scanner sc = new Scanner(System.in);
+		 StudentInterface si = new StudentService();
 		 while(!ex)
 		 {
-			 Scanner sc = new Scanner(System.in);
 			 System.out.println();
 			 System.out.println("Enter your choice : ");
 			 int choice = sc.nextInt();
 			 try
 			 {
+				 
 				 switch(choice)
 				 {
-				   case 1:  registerForCourse();
+				   case 1:  si.register();
 				            break;
-				   case 2:  viewGrades();
+				   case 2:  si.changePassword();
 				            break;
-				   case 3:  studentDetails();
+				   case 3:  si.viewGradeCard();
 				            break;
-				   case 4: System.out.println();
+				   case 4:  System.out.println();
 					        System.out.println("THANK YOU FOR VISITING STUDENT MENU");
 					        System.out.println();
 					        ex = true;

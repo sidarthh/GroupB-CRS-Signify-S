@@ -5,37 +5,29 @@ package com.signify.client;
 
 import java.util.Scanner;
 
+import com.signify.service.AdminInterface;
+import com.signify.service.AdminService;
+
 /**
  * @author Naman
  *
  */
 public class CRSAdminMenu {
-
-	static void approveToStudent()
-	{
-	   System.out.println("Student is approved");	
-	}
-	static void addCourse()
-	{
-		System.out.println("Course is added");	
-	}
-	static void addAdmin()
-	{
-		System.out.println("New admin has been added");	
-	}
 	static void displayMenu()
 	{
 		 System.out.println("WELCOME TO ADMIN MENU");
 		 System.out.println("==========================");
 		 System.out.println();
-		 System.out.println("1.APPROVE TO STUDENT");
-		 System.out.println("2.ADD COURSE");
-		 System.out.println("3.ADD ADMIN");
-		 System.out.println("4.EXIT");
+		 System.out.println("1.ADD PROFESSOR");
+		 System.out.println("2.ASSIGN COURSE");
+		 System.out.println("3.APPROVE STUDENT");
+		 System.out.println("4.ADD ADMIN");
+		 System.out.println("5.EXIT");
 		 boolean ex = false;
+		 Scanner sc = new Scanner(System.in);
+		 AdminInterface ad = new AdminService();
 		 while(!ex)
 		 {
-			 Scanner sc = new Scanner(System.in);
 			 System.out.println();
 			 System.out.println("Enter your choice : ");
 			 int choice = sc.nextInt();
@@ -43,18 +35,21 @@ public class CRSAdminMenu {
 			 {
 				 switch(choice)
 				 {
-				   case 1:  approveToStudent();
+				   case 1:  ad.addProfessor();
 				            break;
-				   case 2:  addCourse();
+				   case 2:  ad.assignCourse();
 				            break;
-				   case 3:  addAdmin();
+				   case 3:  ad.approveStudent();;
 				            break;
-				   case 4: System.out.println();
+				   case 4:  ad.addAdmin();
+					        break;         
+				   case 5:  System.out.println();
 					        System.out.println("THANK YOU FOR VISITING ADMIN MENU");
 					        System.out.println();
 					        ex = true;
 					        CRSApplicationMenu obj = new CRSApplicationMenu();
 					        obj.displayApplicationMenu();
+					        
 				   default: System.out.println("Invalid selection");	        
 				 }
 			 }

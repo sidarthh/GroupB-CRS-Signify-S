@@ -7,18 +7,18 @@ package com.signify.service;
  * @author Naman
  *
  */
-public class StudentService {
+public class StudentService implements StudentInterface {
 
-	void changePassword(int id,String oldPassword,String newPassword)
+	public void changePassword()
 	{
-		
+		System.out.println("Password changed......");
 	}
-	void register()
+	public void register()
 	{
-		
+		System.out.println("Student is registered");
 	}
-	void viewGradeCard(int id)
+	public void viewGradeCard()
 	{
-		
+		System.out.println("Currently no grade cards are available");
 	}
 }

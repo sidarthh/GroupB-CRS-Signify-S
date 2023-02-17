@@ -7,14 +7,18 @@ package com.signify.service;
  * @author Naman
  *
  */
-public class ProfessorService {
+public class ProfessorService implements ProfessorInterface{
 
-	void viewEnrolledStudents(int courseCode) 
+	public void addCourse() 
 	{
-		
+		System.out.println("Course is added");
 	}
-	void addGrade(int studentId,int courseCode)
+	public void viewEnrolledStudents() 
 	{
-		
+		System.out.println("Currently no student have enrolled");
+	}
+	public void addGrade()
+	{
+		System.out.println("Grade is added");
 	}
 }

@@ -81,54 +81,37 @@ public class CRSApplicationMenu {
 		 {
 			 Scanner sc = new Scanner(System.in);
 			 System.out.println();
-			 System.out.println("Enter your choice : ");
-			 int choice = sc.nextInt();
-			 switch(choice)
+			 System.out.println("Enter your choice : ");    	
+     	     try
+		     {
+				 int choice = sc.nextInt();
+				 switch(choice)
+				 {
+				   case 1:  userLogin();
+				            break;
+				   case 2:  registerForUser();
+				            break;
+				   case 3:  updateUser();
+				            break;
+				   case 4:  viewUser();
+		                    break;
+				   case 5:  System.out.println();
+					        System.out.println("THANK YOU FOR VISITING CRS APPLICATION");
+					        ex = true;
+					        System.exit(0);
+					default: System.out.println("Invalid selection");    
+				 }
+		     }	 
+			 catch(Exception e)
 			 {
-			   case 1:  userLogin();
-			            break;
-			   case 2:  registerForUser();
-			            break;
-			   case 3:  updateUser();
-			            break;
-			   case 4:  viewUser();
-	                    break;
-			   case 5:  System.out.println();
-				        System.out.println("THANK YOU FOR VISITING CRS APPLICATION");
-				        ex = true;
-				        System.exit(0);
-				default: System.out.println("Invalid selection");        
-			 }	
-//			 try
-//			 {
-//				 int choice = sc.nextInt();
-//				 switch(choice)
-//				 {
-//				   case 1:  userLogin();
-//				            break;
-//				   case 2:  registerForUser();
-//				            break;
-//				   case 3:  updateUser();
-//				            break;
-//				   case 4:  viewUser();
-//		                    break;
-//				   case 5:  System.out.println();
-//					        System.out.println("THANK YOU FOR VISITING CRS APPLICATION");
-//					        ex = true;
-//					        System.exit(0);
-//					default: System.out.println("Invalid selection");        
-//				 }	
-//			 }
-//			 catch(Exception e)
-//			 {
-//				 System.out.println("Exception occurred");
-//			 }
-//			 finally
-//			 {
-//				 ex = false;  
-//			 }
+				 System.out.println("Exception occurred");
+			 }
+			 finally
+			 {
+				 ex = false;  
+			 }
 		 }
-	}
+	  }
 	 public static void main(String args[])
 	 {
           displayApplicationMenu();

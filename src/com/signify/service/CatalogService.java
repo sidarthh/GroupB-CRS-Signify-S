@@ -7,17 +7,17 @@ package com.signify.service;
  * @author Naman
  *
  */
-public class CatalogService {
+public class CatalogService implements CatalogInterface{
 
-	 void addCourse(int courseCode,String name,String instructor)
+	 public void addCourse(int courseCode,String name,String instructor)
 	 {
 		 
 	 }
-	 void deleteCourse(int courseCode)
+	 public void deleteCourse(int courseCode)
 	 {
 		 
 	 }
-	 void viewCourseDetails(int courseCode)
+	 public void viewCourseDetails(int courseCode)
 	 {
 		 
 	 }

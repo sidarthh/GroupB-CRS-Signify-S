@@ -5,24 +5,15 @@ package com.signify.client;
 
 import java.util.Scanner;
 
+import com.signify.service.ProfessorInterface;
+import com.signify.service.ProfessorService;
+
 /**
  * @author Naman
  *
  */
 public class CRSProfessorMenu {
 
-	static void addCourse()
-	{
-	   System.out.println("Course is added");	
-	}
-	static void viewEnrolledStudents()
-	{
-		System.out.println("No student has enrolled yet");	
-	}
-	static void addGrades()
-	{
-		System.out.println("Grades have been added");	
-	}
 	static void displayMenu() {
 		 System.out.println("WELCOME TO PROFESSOR MENU");
 		 System.out.println("==========================");
@@ -32,9 +23,10 @@ public class CRSProfessorMenu {
 		 System.out.println("3.ADD GRADES");
 		 System.out.println("4.EXIT");
 		 boolean ex = false;
+		 Scanner sc = new Scanner(System.in);
+		 ProfessorInterface pi = new ProfessorService();
 		 while(!ex)
 		 {
-			 Scanner sc = new Scanner(System.in);
 			 System.out.println();
 			 System.out.println("Enter your choice : ");
 			 int choice = sc.nextInt();
@@ -42,11 +34,11 @@ public class CRSProfessorMenu {
 			 {
 				 switch(choice)
 				 {
-				   case 1:  addCourse();
+				   case 1:  pi.addCourse();
 				            break;
-				   case 2:  viewEnrolledStudents();
+				   case 2:  pi.viewEnrolledStudents();
 				            break;
-				   case 3:  addGrades();
+				   case 3:  pi.addGrade();
 				            break;
 				   case 4: System.out.println();
 					        System.out.println("THANK YOU FOR VISITING PROFESSOR MENU");
