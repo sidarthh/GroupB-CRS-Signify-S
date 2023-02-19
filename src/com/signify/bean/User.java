@@ -13,6 +13,12 @@ public class User {
 	private String name;
 	private String role;
 	private String password;
+	
+	public String toString() {
+		String str = "Name: " + this.name + " Role: " + this.role;
+		return str;
+	}
+	
 	public String getPassword() {
 		return password;
 	}

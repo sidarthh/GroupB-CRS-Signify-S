@@ -13,7 +13,7 @@ import com.signify.service.AdminService;
  *
  */
 public class CRSAdminMenu {
-	static void displayMenu()
+	static public void displayMenu()
 	{
 		 System.out.println("WELCOME TO ADMIN MENU");
 		 System.out.println("==========================");

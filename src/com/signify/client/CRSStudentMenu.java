@@ -26,7 +26,7 @@ public class CRSStudentMenu {
 	{
 		System.out.println("Currently no student details are available");	
 	}
-	static void displayMenu() {
+	static public void displayMenu() {
 		 System.out.println("WELCOME TO STUDENT MENU");
 		 System.out.println("==========================");
 		 System.out.println();

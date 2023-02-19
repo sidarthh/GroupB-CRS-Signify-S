@@ -3,81 +3,104 @@
  */
 package com.signify.service;
 
+import java.util.*;
 import java.util.Scanner;
 
 import com.signify.bean.User;
+import com.signify.client.CRSAdminMenu;
+import com.signify.client.CRSProfessorMenu;
+import com.signify.client.CRSStudentMenu;
 
 /**
  * @author Naman
  *
  */
-public class UserService {
+public class UserService implements UserInterface{
 	 
-	 private User u[];
-	 static private int count;
-	 public UserService()
+	 private List<User> ul = new ArrayList<User>();
+	 
+	 public void userLogin(String role)
+		{
+			if(role.equals("admin"))
+			{
+			   System.out.println();	
+			   CRSAdminMenu ad = new CRSAdminMenu();
+			   ad.displayMenu();
+			}
+			else if(role.equals("student"))
+			{
+				System.out.println();	
+				CRSStudentMenu st = new CRSStudentMenu();
+				st.displayMenu();
+			}
+			else if(role.equals("professor"))
+			{
+				System.out.println();	
+				CRSProfessorMenu pro = new CRSProfessorMenu();
+				pro.displayMenu();
+			}
+			else
+			{
+				System.out.println("Invalid selection!");
+			}	
+		}
+		
+	 public void registerForUser(String name,String role,String password)
 	 {
-		 u = new User[]{new User(),new User(),new User(),new User(),new User()};
-		 count = 0;
-	 }
-	 public void createUser()
-	 {
-		 u[count].setUserId(count); 
-		 Scanner sc = new Scanner(System.in);
-		 System.out.println("Enter username : ");
-		 String username = sc.nextLine();
-		 u[count].setName(username);
-		 System.out.println("Enter role : ");
-		 String role = sc.nextLine();
-		 u[count].setRole(role);
-		 System.out.println("Enter password : ");
-		 String password = sc.nextLine();
-		 u[count].setPassword(password);
-		 System.out.println("New user created successfully !!! with user id "+count);
-		 count++;
+		 User u = new User();
+		 u.setUserId(ul.size()+1); 
+		 u.setName(name);
+		 u.setRole(role);
+		 u.setPassword(password);
+		 ul.add(u);
 	 }
 	 public void deleteUser(int id)
 	 {
-		 u[id].setName(null);
-		 u[id].setRole(null);
-		 u[id].setPassword(null);
+		 for(User u : ul) {
+			 if(u.getUserId()==id) {
+				 ul.remove(u);
+				 return;
+			 }
+		 }
+		 System.out.println("User deleted with id "+id);
 	 }
-	 public void updateUser(int id)
+	 public void updateUser1(int id,String newName)
 	 {
-		 Scanner sc = new Scanner(System.in);
-		 System.out.println("Which parameter you want to change : ");
-		 System.out.println("1.Username");
-		 System.out.println("2.Role");
-		 System.out.println("3.Password");
-		 int choice = sc.nextInt();
-		 switch(choice)
-		 {
-		    case 1 : System.out.println("Set new username : ");
-		             String ch = sc.nextLine();
-		             String newName = sc.nextLine(); 
-		             u[id].setName(newName);
-		             break;
-		    case 2 : System.out.println("Set new role : ");
-                     String newRole = sc.nextLine(); 
-                     u[id].setName(newRole);
-                     break;	   
-		    case 3 : System.out.println("Set new password : ");
-                     String newPassword = sc.nextLine(); 
-                     u[id].setName(newPassword);
-                     break;
-		    default : System.out.println("Invalid selection");
+		 for(User u : ul) {
+			 if(u.getUserId()==id) {
+				 u.setName(newName);
+				 break;
+			 }
+		 }
+	 }
+	 public void updateUser2(int id,String newRole)
+	 {
+		 for(User u : ul) {
+			 if(u.getUserId()==id) {
+				 u.setRole(newRole);
+				 break;
+			 }
+		 }
+	 }
+	 public void updateUser3(int id,String newPassword)
+	 {
+		 for(User u : ul) {
+			 if(u.getUserId()==id) {
+				 u.setPassword(newPassword);
+				 break;
+			 }
 		 }
 	 }
 	 public void viewUser(int id)
 	 {
-		 if(u[id].getName()==null)
-		 {
-			 System.out.println("No such user exist");
-			 return;
+		 for(User u : ul) {
+			 if(u.getUserId()==id) {
+				 System.out.println(u);
+			 }
 		 }
-		 System.out.println("Username is : "+u[id].getName());
-		 System.out.println("UserId is : "+(count-1));
-		 System.out.println("Role is : "+u[id].getRole());
-		 System.out.println("Password is : "+u[id].getPassword());
+	 }
+	 public void viewListUser()
+	 {
+		 System.out.println(ul);
 	 }
 }

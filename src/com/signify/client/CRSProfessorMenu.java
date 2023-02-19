@@ -14,7 +14,7 @@ import com.signify.service.ProfessorService;
  */
 public class CRSProfessorMenu {
 
-	static void displayMenu() {
+	static public void displayMenu() {
 		 System.out.println("WELCOME TO PROFESSOR MENU");
 		 System.out.println("==========================");
 		 System.out.println();
