@@ -1,5 +1,7 @@
 package com.signify.bean;
 
+import java.util.List;
+
 /**
  * @author SIDARTH SAIKUMAR
  *
@@ -8,6 +10,15 @@ public class Student extends User {
 	private int studentId;
 	private String branch;
 	private int batch;
+	private List<String>modules;
+	public List<String> getModules() {
+		return modules;
+	}
+
+	public void setModules(String module) {
+		this.modules.add(module);
+	}
+
 	public int getStudentId() {
 		return studentId;
 	}

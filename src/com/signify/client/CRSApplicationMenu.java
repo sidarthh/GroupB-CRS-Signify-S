@@ -5,6 +5,7 @@ import java.util.*;
 import java.util.Scanner;
 
 import com.signify.bean.User;
+import com.signify.service.UserInterface;
 import com.signify.service.UserService;
 
 /**
@@ -14,7 +15,7 @@ import com.signify.service.UserService;
 
 public class CRSApplicationMenu {
 	
-	static UserService us1 = new UserService();
+//	static UserService us1 = new UserService();
 	static void displayApplicationMenu()
 	{
 		 System.out.println("WELCOME TO CRS APPLICATION");
@@ -30,6 +31,7 @@ public class CRSApplicationMenu {
 		 System.out.println("6.DELETE USER");
 		 System.out.println("7.EXIT");
 		 boolean ex = false;
+         UserInterface us1 = new UserService(); 
 		 while(!ex)
 		 {
 			 Scanner sc = new Scanner(System.in);

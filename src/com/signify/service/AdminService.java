@@ -3,14 +3,20 @@
  */
 package com.signify.service;
 
+import java.util.*;
+
+import com.signify.bean.*;
+
 /**
  * @author asus
  *
  */
 public class AdminService implements AdminInterface{
-
-	public void addProfessor() {
-		System.out.println("Professor added");
+	
+	List<Professor> profs = new ArrayList<Professor>();
+	
+	public void addProfessor(Professor prof) {
+		profs.add(prof);
 	}
 	public void assignCourse() {
 		System.out.println("Course is assigned");

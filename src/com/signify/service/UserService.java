@@ -6,6 +6,7 @@ package com.signify.service;
 import java.util.*;
 import java.util.Scanner;
 
+import com.signify.bean.Student;
 import com.signify.bean.User;
 import com.signify.client.CRSAdminMenu;
 import com.signify.client.CRSProfessorMenu;
@@ -18,7 +19,6 @@ import com.signify.client.CRSStudentMenu;
 public class UserService implements UserInterface{
 	 
 	 private List<User> ul = new ArrayList<User>();
-	 
 	 public void userLogin(String role)
 		{
 			if(role.equals("admin"))
@@ -53,6 +53,7 @@ public class UserService implements UserInterface{
 		 u.setRole(role);
 		 u.setPassword(password);
 		 ul.add(u);
+		 
 	 }
 	 public void deleteUser(int id)
 	 {

@@ -5,6 +5,7 @@ package com.signify.client;
 
 import java.util.Scanner;
 
+import com.signify.bean.*;
 import com.signify.service.AdminInterface;
 import com.signify.service.AdminService;
 
@@ -35,7 +36,13 @@ public class CRSAdminMenu {
 			 {
 				 switch(choice)
 				 {
-				   case 1:  ad.addProfessor();
+				   case 1:  Professor prof = new Professor(); 
+				   			prof.setName("Prof1");
+				   			prof.setPassword("p");
+				   			prof.setRole("professor");
+				   			prof.setUserId(101);
+					        ad.addProfessor(prof);
+					        System.out.println("Professor Added");
 				            break;
 				   case 2:  ad.assignCourse();
 				            break;

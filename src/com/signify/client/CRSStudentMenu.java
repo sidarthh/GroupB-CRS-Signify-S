@@ -3,10 +3,14 @@
  */
 package com.signify.client;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Scanner;
+
 
 import com.signify.service.StudentInterface;
 import com.signify.service.StudentService;
+import com.signify.service.UserService;
 
 /**
  * @author Naman
@@ -14,29 +18,19 @@ import com.signify.service.StudentService;
  */
 public class CRSStudentMenu {
 
-	static void registerForCourse()
-	{
-	   System.out.println("Currently no course is available");	
-	}
-	static void viewGrades()
-	{
-		System.out.println("Currently no grades are available");	
-	}
-	static void studentDetails()
-	{
-		System.out.println("Currently no student details are available");	
-	}
+	
 	static public void displayMenu() {
 		 System.out.println("WELCOME TO STUDENT MENU");
 		 System.out.println("==========================");
 		 System.out.println();
-		 System.out.println("1.REGISTER");
-		 System.out.println("2.CHANGE PASSWORD");
-		 System.out.println("3.VIEW GRADE CARD");
-		 System.out.println("4.EXIT");
+		 System.out.println("1.REGISTER FOR COURSES");
+		 System.out.println("2.PAY FEE");
+		 System.out.println("3.MY INFO");
+		 System.out.println("4.VIEW GRADE CARD");
+		 System.out.println("5.EXIT");
 		 boolean ex = false;
 		 Scanner sc = new Scanner(System.in);
-		 StudentInterface si = new StudentService();
+		 StudentInterface student = new StudentService();
 		 while(!ex)
 		 {
 			 System.out.println();
@@ -47,13 +41,35 @@ public class CRSStudentMenu {
 				 
 				 switch(choice)
 				 {
-				   case 1:  si.register();
+				   case 1:  System.out.println("Select the course you want to register : ");
+				            String enter_ch = sc.nextLine();
+				            System.out.println();
+				            student.viewCourses();
+//				            int count = 1;
+//				            Iterator<String> it = student.courses.keySet().iterator();       //keyset is a method  
+//				            while(it.hasNext())  
+//				            {  
+//					            String key = (String)it.next();  
+////					            System.out.println("Roll no.: "+key+"     name: "+hm.get(key));  
+//					            System.out.println(count+"."+key+":"+student.courses.get(key));
+//				            }  
+				            String course = sc.nextLine();
+				            course = course.toUpperCase();
+				            student.register(course);
 				            break;
-				   case 2:  si.changePassword();
+				   case 2:  System.out.println("Do you want to pay online or offline");
+					        System.out.println("Enter your choice : ");
+					        String mode = sc.next();
+					        student.payFee(mode);
 				            break;
-				   case 3:  si.viewGradeCard();
+				            
+				   case 3:  System.out.println("Enter your ID:");
+				            int idNumber = sc.nextInt();
+					        student.myInfo(idNumber);
+					        break;
+				   case 4:  student.viewGradeCard();
 				            break;
-				   case 4:  System.out.println();
+				   case 5:  System.out.println();
 					        System.out.println("THANK YOU FOR VISITING STUDENT MENU");
 					        System.out.println();
 					        ex = true;
@@ -72,4 +88,5 @@ public class CRSStudentMenu {
 			 }
 		 }
 	}
+	
 }

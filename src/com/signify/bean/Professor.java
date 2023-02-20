@@ -5,6 +5,13 @@ public class Professor extends User{
 	public String getDepartment() {
 		return department;
 	}
+	
+	public Professor(){
+		this.department = "CS";
+		this.designation = "Professor";
+		this.doj = "today";
+	}
+	
 	public void setDepartment(String department) {
 		this.department = department;
 	}
