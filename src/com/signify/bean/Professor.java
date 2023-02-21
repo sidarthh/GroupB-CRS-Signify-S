@@ -30,5 +30,4 @@ public class Professor extends User{
 		this.doj = doj;
 	}
 	private String designation;
-	private String doj;
 }

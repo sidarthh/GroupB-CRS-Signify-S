@@ -10,5 +10,6 @@ public interface StudentInterface {
 	public void register(String res);
 	public void payFee(String mode);
 	public void myInfo(int id);
+	public void registerForStudent(String name,String password,String branch,int batch);
 	public void viewGradeCard();
 }

@@ -23,8 +23,8 @@ public class CRSStudentMenu {
 		 System.out.println("WELCOME TO STUDENT MENU");
 		 System.out.println("==========================");
 		 System.out.println();
-		 System.out.println("1.REGISTER FOR COURSES");
-		 System.out.println("2.PAY FEE");
+		 System.out.println("1.VIEW COURSES");
+		 System.out.println("2.STUDENT REGISTERATION");
 		 System.out.println("3.MY INFO");
 		 System.out.println("4.VIEW GRADE CARD");
 		 System.out.println("5.EXIT");
@@ -41,9 +41,9 @@ public class CRSStudentMenu {
 				 
 				 switch(choice)
 				 {
-				   case 1:  System.out.println("Select the course you want to register : ");
-				            String enter_ch = sc.nextLine();
-				            System.out.println();
+				   case 1:  //System.out.println("Select the course you want to register : ");
+				            //String enter_ch = sc.nextLine();
+				            //System.out.println();
 				            student.viewCourses();
 //				            int count = 1;
 //				            Iterator<String> it = student.courses.keySet().iterator();       //keyset is a method  
@@ -53,16 +53,18 @@ public class CRSStudentMenu {
 ////					            System.out.println("Roll no.: "+key+"     name: "+hm.get(key));  
 //					            System.out.println(count+"."+key+":"+student.courses.get(key));
 //				            }  
-				            String course = sc.nextLine();
-				            course = course.toUpperCase();
-				            student.register(course);
+//				            String course = sc.nextLine();
+//				            course = course.toUpperCase();
+//				            student.registerForCourse(course);
 				            break;
-				   case 2:  System.out.println("Do you want to pay online or offline");
-					        System.out.println("Enter your choice : ");
-					        String mode = sc.next();
-					        student.payFee(mode);
+				   case 2:  System.out.println("Enter username : ");
+				            String name = sc.next();
+				            System.out.println("Enter branch : ");
+				            String branch = sc.next();
+				            System.out.println("Enter batch : ");
+				            int batch = sc.nextInt();
+//					        student.registerForStudent(name,branch,batch);
 				            break;
-				            
 				   case 3:  System.out.println("Enter your ID:");
 				            int idNumber = sc.nextInt();
 					        student.myInfo(idNumber);

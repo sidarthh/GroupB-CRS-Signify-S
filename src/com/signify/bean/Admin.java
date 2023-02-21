@@ -11,3 +11,8 @@ public class Admin extends User{
 	}
 	
 }
+
+
+// user 
+
+// adminid , name , password

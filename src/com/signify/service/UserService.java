@@ -11,6 +11,10 @@ import com.signify.bean.User;
 import com.signify.client.CRSAdminMenu;
 import com.signify.client.CRSProfessorMenu;
 import com.signify.client.CRSStudentMenu;
+import com.signify.dao.StudentDAOImplementation;
+import com.signify.dao.StudentDAOInterface;
+import com.signify.dao.UserDAOImplementation;
+import com.signify.dao.UserDAOInterface;
 
 /**
  * @author Naman
@@ -19,25 +23,30 @@ import com.signify.client.CRSStudentMenu;
 public class UserService implements UserInterface{
 	 
 	 private List<User> ul = new ArrayList<User>();
-	 public void userLogin(String role)
+	 public void userLogin(int userID,String password,String role)
 		{
-			if(role.equals("admin"))
+		    UserDAOInterface userDao = new UserDAOImplementation();
+		    boolean result = userDao.validate(userID,password,role);
+			if(result==true)
 			{
-			   System.out.println();	
-			   CRSAdminMenu ad = new CRSAdminMenu();
-			   ad.displayMenu();
-			}
-			else if(role.equals("student"))
-			{
-				System.out.println();	
-				CRSStudentMenu st = new CRSStudentMenu();
-				st.displayMenu();
-			}
-			else if(role.equals("professor"))
-			{
-				System.out.println();	
-				CRSProfessorMenu pro = new CRSProfessorMenu();
-				pro.displayMenu();
+				if(role.equals("admin"))
+				{
+				   System.out.println();	
+				   CRSAdminMenu ad = new CRSAdminMenu();
+				   ad.displayMenu();
+				}
+				else if(role.equals("student"))
+				{
+					System.out.println();	
+					CRSStudentMenu st = new CRSStudentMenu();
+					st.displayMenu();
+				}
+				else if(role.equals("professor"))
+				{
+					System.out.println();	
+					CRSProfessorMenu pro = new CRSProfessorMenu();
+					pro.displayMenu();
+				}
 			}
 			else
 			{

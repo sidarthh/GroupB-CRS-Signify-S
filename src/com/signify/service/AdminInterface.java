@@ -8,4 +8,6 @@ public interface AdminInterface {
 	public void assignCourse();
 	public void approveStudent();
 	public void addAdmin();
+	public void viewInfo(int id,int val);
+	public void editUser(int id,int val);
 }

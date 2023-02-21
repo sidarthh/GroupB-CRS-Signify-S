@@ -9,7 +9,7 @@ package com.signify.service;
  */
 public interface UserInterface {
 
-	public void userLogin(String role);
+	public void userLogin(int userID,String password,String role);
 	public void registerForUser(String name,String role,String password);
 	public void deleteUser(int id);
 	public void updateUser1(int id,String newName);
