@@ -32,8 +32,6 @@ public class StudentService implements StudentInterface {
 	 static final String PASS = "shinamangarg2001";
 	
 	
-	List<Student>s1 = new ArrayList<Student>();
-	public Map<String,Integer>courses = new HashMap<String,Integer>();
 	
 	StudentDAOInterface studentDao = new StudentDAOImplementation();
 	public StudentService()

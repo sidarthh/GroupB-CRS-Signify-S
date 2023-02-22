@@ -15,27 +15,43 @@ import com.signify.dao.AdminDAOInterface;
  */
 public class AdminService implements AdminInterface{
 	
-	List<Professor> profs = new ArrayList<Professor>();
 	AdminDAOInterface ad = new AdminDAOImplementation();
 	public void assignCourse() {
 		System.out.println("Course is assigned");
 	}
-	public void approveStudent() {
-		System.out.println("Student is approved");
+	public boolean viewUnapproveStudents()
+	{
+		return ad.viewDAOUnapprove();
 	}
-	public void addAdmin() {
-		System.out.println("Admin is added");
+	public void approveStudent(int id) {
+	
+		ad.approveDAOStudent(id); 
+	}
+	public void addAdmin(String name,String pass) {
+		ad.addDAOAdmin(name,pass);
 	}
 	public void viewInfo(int id,int val)
 	{
 		ad.editDAOInfo(id,val);
 	}
-	public void addProfessor(Professor obj)
+	public void addCourse(String coursename,int profid)
 	{
-		
+		ad.addDAOCourse(coursename,profid);
+	}
+	public void removeCourse(String coursename)
+	{
+		ad.removeDAOCourse(coursename);
+	}
+	public void viewCourses()
+	{
+		ad.viewDAOCourses();
+	}
+	public void addProfessor(String name,String pass,String depart,String des)
+	{
+		ad.addDAOProfessor(name,pass,depart,des);
 	}
 	public void editUser(int id,int val)
 	{
-		
+		return;
 	}
 }

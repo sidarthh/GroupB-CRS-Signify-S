@@ -20,11 +20,14 @@ public class CRSAdminMenu {
 		 System.out.println("WELCOME TO ADMIN MENU");
 		 System.out.println("==========================");
 		 System.out.println();
-		 System.out.println("1.VIEW USER DETAILS");
-		 System.out.println("2.EDIT USER DETAILS");
-		 System.out.println("3.ADD PROFESSOR");
-		 System.out.println("4.ADD ADMIN");
-		 System.out.println("5.ADD COURSE");
+		 System.out.println("1. Approve the student registration");
+		 System.out.println("2. Add Course");
+		 System.out.println("3. Remove Course");
+		 System.out.println("4. View Courses");
+		 System.out.println("5. Add Admin");
+		 System.out.println("6. Add Professor");
+		 System.out.println("7. Generate Report Card");
+         System.out.println("8. Exit\n");
 		 boolean ex = false;
 		 Scanner sc = new Scanner(System.in);
 		 AdminInterface ad = new AdminService();
@@ -37,42 +40,61 @@ public class CRSAdminMenu {
 			 {
 				 switch(choice)
 				 {
-				   case 1:  System.out.println("Enter the user ID to view information : ");
-			                int id = sc.nextInt();
-			                ad.viewInfo(id);
+				   case 1:  
+					        if(!ad.viewUnapproveStudents())
+					        {
+					        	System.out.println("Press 0 to approve all students : ");
+					            System.out.println("Press 1 to approve single student : ");
+					            int option = sc.nextInt();
+						        switch(option)
+						        { 
+						           case 0:ad.approveStudent(0);
+						        	      break;
+						           case 1:System.out.println("Enter student id to approve : ");
+						                  int sel = sc.nextInt();
+						        	      ad.approveStudent(sel);
+						        	      break;
+						           default : System.out.println("Invalid selection");	      
+						        }
+					        }
                             break;
-				   case 2:  System.out.println("Enter user ID to edit : ");
-				            id = sc.nextInt();
-				            int val = 0;
-				            System.out.println("Which paramter you want to change : ");
-				            System.out.println("1.Name");
-				            System.out.println("2.Password");
-				            System.out.println("3.Role");
-				            System.out.println("Select paramter : ");
-				            val = sc.nextInt();
-					        ad.editUser(id,val);
+				   case 2:  System.out.println("Enter the course name you want to register : ");
+				            String ch = sc.nextLine();
+				            String coursename = sc.nextLine();
+				            System.out.println("Enter the professor id for the course : ");
+				            int profid = sc.nextInt();
+				            ad.addCourse(coursename,profid);
 				            break;
-				   case 3:  ad.approveStudent();;
+				   case 3:  System.out.println("Enter the course name you want to remove : ");
+		                    ch = sc.nextLine();
+		                    coursename = sc.nextLine();
+		                    ad.removeCourse(coursename);
 				            break;
-				   case 4:  Professor prof = new Professor();
-				            System.out.println("Enter professor name : ");
-				            String name = sc.next();
-				            System.out.println("Enter department : ");
-				            String department = sc.next();
-				            System.out.println("Enter designation : ");
-				            String designation = sc.next();
-				            prof.setName(name);
-				            prof.setDepartment(department);
-				            prof.setDesignation(designation);
-				            prof.setRole("professor");
-					        ad.addProfessor(prof);
+				   case 4:  ad.viewCourses();
 					        break;         
-				   case 5:  System.out.println();
-					        System.out.println("THANK YOU FOR VISITING ADMIN MENU");
-					        System.out.println();
-					        ex = true;
-					        CRSApplicationMenu obj = new CRSApplicationMenu();
-					        obj.displayApplicationMenu();
+				   case 5:  System.out.println("Enter new admin name : ");
+				            String name = sc.next();
+				            System.out.println("Set password : ");
+				            String pass = sc.next();
+				            ad.addAdmin(name, pass);
+				            break; 
+				   case 6: System.out.println("Enter professor name : ");
+		                   name = sc.next();
+		                   System.out.println("Enter password : ");
+		                   pass = sc.next();
+		                   System.out.println("Enter department name : ");
+		                   String depart = sc.next();
+		                   System.out.println("Enter designation name : ");
+		                   String des = sc.next();
+		                   ad.addProfessor(name,pass,depart,des);	
+					       break;   
+				   case 7: break;
+				   case 8: System.out.println();
+			               System.out.println("THANK YOU FOR VISITING ADMIN MENU");
+			               System.out.println();
+			               ex = true;
+			               CRSApplicationMenu obj = new CRSApplicationMenu();
+			               obj.displayApplicationMenu();	   
 					        
 				   default: System.out.println("Invalid selection");	        
 				 }

@@ -22,10 +22,9 @@ import com.signify.dao.UserDAOInterface;
  */
 public class UserService implements UserInterface{
 	 
-	 private List<User> ul = new ArrayList<User>();
+	 UserDAOInterface userDao = new UserDAOImplementation();
 	 public void userLogin(int userID,String password,String role)
 		{
-		    UserDAOInterface userDao = new UserDAOImplementation();
 		    boolean result = userDao.validate(userID,password,role);
 			if(result==true)
 			{
@@ -50,67 +49,11 @@ public class UserService implements UserInterface{
 			}
 			else
 			{
-				System.out.println("Invalid selection!");
+				System.out.println("");
 			}	
 		}
-		
-	 public void registerForUser(String name,String role,String password)
+	 public void updatePassword(int id,String oldpass,String newpass)
 	 {
-		 User u = new User();
-		 u.setUserId(ul.size()+1); 
-		 u.setName(name);
-		 u.setRole(role);
-		 u.setPassword(password);
-		 ul.add(u);
-		 
-	 }
-	 public void deleteUser(int id)
-	 {
-		 for(User u : ul) {
-			 if(u.getUserId()==id) {
-				 ul.remove(u);
-				 return;
-			 }
-		 }
-		 System.out.println("User deleted with id "+id);
-	 }
-	 public void updateUser1(int id,String newName)
-	 {
-		 for(User u : ul) {
-			 if(u.getUserId()==id) {
-				 u.setName(newName);
-				 break;
-			 }
-		 }
-	 }
-	 public void updateUser2(int id,String newRole)
-	 {
-		 for(User u : ul) {
-			 if(u.getUserId()==id) {
-				 u.setRole(newRole);
-				 break;
-			 }
-		 }
-	 }
-	 public void updateUser3(int id,String newPassword)
-	 {
-		 for(User u : ul) {
-			 if(u.getUserId()==id) {
-				 u.setPassword(newPassword);
-				 break;
-			 }
-		 }
-	 }
-	 public void viewUser(int id)
-	 {
-		 for(User u : ul) {
-			 if(u.getUserId()==id) {
-				 System.out.println(u);
-			 }
-		 }
-	 }
-	 public void viewListUser()
-	 {
-		 System.out.println(ul);
+		 userDao.updateDAOPassword(id,oldpass,newpass); 
 	 }
 }

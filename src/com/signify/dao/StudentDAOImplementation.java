@@ -68,13 +68,13 @@ public class StudentDAOImplementation implements StudentDAOInterface{
 			         
 			      }
 			      
-			      String sql3="insert into student values(?,?,?,?,?,?)";			      
+			      String sql3="insert into student values(?,?,?,?,?)";			      
 			      stmt3 = conn.prepareStatement(sql3);
 			      stmt3.setInt(1,studid);
 			      stmt3.setString(2,name);
 			      stmt3.setString(3,branch);
 			      stmt3.setInt(4,batch);
-			      stmt3.setInt(5,1);
+			      stmt3.setInt(5,0);
 			      stmt3.executeUpdate();
 			      //STEP 6: Clean-up environment
 			     // rs.close();
@@ -82,6 +82,7 @@ public class StudentDAOImplementation implements StudentDAOInterface{
 			      conn.close();
 			      System.out.println("Student is registered successfully.....");
 			      System.out.println("Your user id is : "+studid);
+			      System.out.println("Pending Approval, Contact Admin");
 			   }catch(SQLException se){
 			      //Handle errors for JDBC
 				   System.out.println("SQLException"+ se.getErrorCode()+"-->"+se.getCause());

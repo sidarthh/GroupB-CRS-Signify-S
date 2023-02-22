@@ -25,7 +25,7 @@ public class UserDAOImplementation implements UserDAOInterface {
 	 
 	 Connection conn = null;
 	 PreparedStatement stmt = null;
-	
+	 PreparedStatement stmt2 = null;
 	public boolean validate(int userID,String password,String Role)
 	{
 		
@@ -57,7 +57,7 @@ public class UserDAOImplementation implements UserDAOInterface {
   
 			      //STEP 5: Extract data from result set
 			      if(rs.next()) {
-			    	  if(rs.getInt("id")==userID) {
+			    	  if(rs.getInt("id")==userID && rs.getString("password").equals(password) && rs.getInt("roleid")==role) {
 			    		  if(Role.equals("student")) {
 			    			  if(rs.getInt("isapproved")==0) {
 			    				  System.out.println("Pending Admin Approval....");
@@ -67,6 +67,11 @@ public class UserDAOImplementation implements UserDAOInterface {
 			    		  res = true;
 			    		  System.out.println("You have successfully logged in as "+Role+".....");
 			    	  }
+			
+			      }
+			      if(!res)
+			      {
+			    	  System.out.println("Invalid credentials");
 			      }
 			      //STEP 6: Clean-up environment
 			     
@@ -97,5 +102,66 @@ public class UserDAOImplementation implements UserDAOInterface {
 			   System.out.println();
       //end main
 			   return res;
+	}
+	public void updateDAOPassword(int id,String oldpass,String newpass)
+	{
+		try{
+			   
+			   // Step 3 Register Driver here and create connection 
+			   
+			      System.out.println("Connecting to database...");
+			      conn = DriverManager.getConnection(DB_URL,USER,PASS);
+			   
+			 
+			      String sql="select * from user where id="+id+" and password='"+oldpass+"'";
+			      stmt = conn.prepareStatement(sql);
+			      ResultSet rs = stmt.executeQuery(sql);
+
+			      //STEP 5: Extract data from result set
+			      boolean res = false;
+			      if(rs.next()) {
+			    	  if(rs.getInt("id")==id && rs.getString("password").equals(oldpass)) 
+			    	  {
+			    		  String sql3 = "UPDATE user SET password='"+newpass+"' WHERE id="+id;
+					      stmt2 = conn.prepareStatement(sql3);
+					      rs = stmt.executeQuery(sql);
+			    		  res = true;
+			    		  System.out.println("You have successfully changed your password.....");
+			    	   }
+			    		  
+			      }
+			
+			      if(!res)
+			      {
+			    	  System.out.println("Invalid credentials");
+			      }
+			      //STEP 6: Clean-up environment
+			     
+			      stmt.close();
+			      conn.close();
+			   }catch(SQLException se){
+			      //Handle errors for JDBC
+				   System.out.println("SQLException"+ se.getErrorCode()+"-->"+se.getCause());
+			      se.printStackTrace();
+			   }catch(Exception e){
+			      //Handle errors for Class.forName
+				   System.out.println("Exception"+e.getLocalizedMessage());
+			      e.printStackTrace();
+			   }finally{
+			      //finally block used to close resources
+			      try{
+			         if(stmt!=null)
+			            stmt.close();
+			      }catch(SQLException se2){
+			      }// nothing we can do
+			      try{
+			         if(conn!=null)
+			            conn.close();
+			      }catch(SQLException se){
+			         se.printStackTrace();
+			      }//end finally try
+			   }//end try
+			   System.out.println();
+   //end main
 	}
 }

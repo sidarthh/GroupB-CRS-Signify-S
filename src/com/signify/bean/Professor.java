@@ -9,7 +9,6 @@ public class Professor extends User{
 	public Professor(){
 		this.department = "CS";
 		this.designation = "Professor";
-		this.doj = "today";
 	}
 	
 	public void setDepartment(String department) {
@@ -20,14 +19,6 @@ public class Professor extends User{
 	}
 	public void setDesignation(String designation) {
 		this.designation = designation;
-	}
-	
-	public String getDoj() {
-		return doj;
-	}
-	
-	public void setDoj(String doj) {
-		this.doj = doj;
 	}
 	private String designation;
 }

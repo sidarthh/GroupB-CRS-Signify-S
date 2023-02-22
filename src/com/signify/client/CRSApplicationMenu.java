@@ -27,13 +27,10 @@ public class CRSApplicationMenu {
 		 System.out.println();
 		 System.out.println("1.LOGIN");
 		 System.out.println("2.REGISTERATION FOR STUDENT");
-		 System.out.println("3.VIEW COURSE CATALOG");
-		 System.out.println("4.VIEW USER DETAILS");
-		 System.out.println("5.LIST USER DETAILS");
-		 System.out.println("6.DELETE USER");
-		 System.out.println("7.EXIT");
+		 System.out.println("3.UPDATE PASSWORD");
+		 System.out.println("4.EXIT");
 		 boolean ex = false;
-         UserInterface us1 = new UserService(); 
+         UserInterface user = new UserService(); 
          StudentInterface student = new StudentService();
 		 while(!ex)
 		 {
@@ -52,7 +49,7 @@ public class CRSApplicationMenu {
 							System.out.println("Enter Role : ");
 							String role = sc.next();
 							role = role.toLowerCase();
-					        us1.userLogin(userID,password,role);
+					        user.userLogin(userID,password,role);
 				            break;
 				   case 2:  System.out.println("Enter username : ");
 		                    String name = sc.next();
@@ -64,18 +61,15 @@ public class CRSApplicationMenu {
 		                    int batch = sc.nextInt();
 			                student.registerForStudent(name,password,branch,batch);
 		                    break;
-				   case 3:  student.viewCourses();
-				   case 4:  System.out.println("Enter the user ID to view information : ");
-					        int id = sc.nextInt();
-					        student.myInfo(id);
-		                    break;
-				   case 5:  us1.viewListUser();
-				            break;
-				   case 6:  System.out.println("Enter the user ID to delete : ");
-					        id = sc.nextInt();
-				            us1.deleteUser(id);
-				            break;
-				   case 7:   System.out.println();
+				   case 3:  System.out.println("Enter user ID : ");
+				            userID = sc.nextInt();
+					        System.out.println("Enter old password : ");
+				            String newpass = sc.next();
+				            System.out.println("Enter new password : ");
+				            String oldpass = sc.next();
+				            user.updatePassword(userID,oldpass,newpass);
+				   			break;
+				   case 4:   System.out.println();
 						     System.out.println("THANK YOU FOR VISITING CRS APPLICATION");
 						     ex = true;
 						     System.exit(0);
