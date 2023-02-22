@@ -20,7 +20,7 @@ public class StudentDAOImplementation implements StudentDAOInterface{
 
 	   //  Database credentials
 	 static final String USER = "root";
-	 static final String PASS = "shinamangarg2001";
+	 static final String PASS = "Passw0rd-1";
 	 static int countUserID = 1;
 	 static int countStudentID = 101;
 	 Connection conn = null;

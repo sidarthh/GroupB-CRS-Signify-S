@@ -9,7 +9,7 @@ package com.signify.service;
  */
 public interface ProfessorInterface {
 
-	void addCourse();
-	void viewEnrolledStudents();
-	void addGrade();
+	//void addCourse();
+	void viewEnrolledStudents(int id);
+	void addGrade(int id);
 }

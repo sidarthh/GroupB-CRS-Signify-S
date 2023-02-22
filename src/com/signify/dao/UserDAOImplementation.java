@@ -21,7 +21,7 @@ public class UserDAOImplementation implements UserDAOInterface {
 
 	   //  Database credentials
 	 static final String USER = "root";
-	 static final String PASS = "shinamangarg2001";
+	 static final String PASS = "Passw0rd-1";
 	 
 	 Connection conn = null;
 	 PreparedStatement stmt = null;

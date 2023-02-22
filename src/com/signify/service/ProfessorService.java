@@ -3,22 +3,24 @@
  */
 package com.signify.service;
 
+import com.signify.dao.ProfessorDAOImplementation;
+
 /**
  * @author Naman
  *
  */
 public class ProfessorService implements ProfessorInterface{
+	ProfessorDAOImplementation professor = new ProfessorDAOImplementation();
 
-	public void addCourse() 
+	
+	public void viewEnrolledStudents(int id) 
 	{
-		System.out.println("Course is added");
+		professor.viewEnrolledStudents(id);
+		//System.out.println("Currently no student have enrolled");
 	}
-	public void viewEnrolledStudents() 
+	public void addGrade(int id)
 	{
-		System.out.println("Currently no student have enrolled");
-	}
-	public void addGrade()
-	{
+		professor.addgrades(id);
 		System.out.println("Grade is added");
 	}
 }
